@@ -208,7 +208,7 @@
                 <p>
                     I am open to feedback, practice ideas, and small collaborations that help me grow.
                 </p>
-                <button class="copy-button" type="button" data-copy-email="goodnessezekiel55@gmail.com">
+                <button class="copy-button" type="button" data-copy-email="">
                     Copy Email
                 </button>
                 <p class="copy-message" data-copy-message aria-live="polite"></p>
@@ -236,13 +236,7 @@
                     <p id="greetingMessage" class="form-message" aria-live="polite"></p>
                 </form>
 
-                <form id="messageForm" class="contact-form message-form" action="https://formsubmit.co/goodnessezekiel55@gmail.com" method="POST" target="messageFrame">
-                    <input type="hidden" name="_subject" id="messageSubject" value="Portfolio message">
-                    <input type="hidden" name="_replyto" id="messageReplyTo">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input class="hidden-field" type="text" name="_honey" tabindex="-1" autocomplete="off">
-
+                <form class="contact-form message-form">
                     <div class="form-title">
                         <p class="eyebrow">Message</p>
                         <h3>Send feedback, inquiries, or opportunities.</h3>
@@ -272,11 +266,8 @@
                         <textarea id="messageBody" name="message" rows="5" placeholder="Write your message here." required></textarea>
                     </div>
 
-                    <button type="submit">Send message</button>
-                    <p id="messageStatus" class="form-message" aria-live="polite"></p>
+                    <button type="reset">Submit</button>
                 </form>
-
-                <iframe class="hidden-frame" name="messageFrame" title="Message submission"></iframe>
             </div>
         </section>
     </main>
