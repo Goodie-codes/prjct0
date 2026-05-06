@@ -116,6 +116,20 @@ h2 {
   transform: translateY(0);
 }
 
+.form-message {
+  min-height: 24px;
+  margin: 18px 0 0;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.form-message.is-error {
+  color: #fecaca;
+}
+
 @media (max-width: 520px) {
   body {
     padding: 28px;
