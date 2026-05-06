@@ -3,26 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="Goodness, a junior software developer building clean one-page web experiences and learning in public.">
+    <title>Goodness | Junior Software Developer</title>
     <link rel="stylesheet" href="0.css">
     <script src="0.js" defer></script>
 </head>
 <body>
-    <h1>WELCOME!</h1>
-    <h2>HI, my name is Goodness and I'm a Junior Software Developer. 
-        <br>I have a passion for coding and I'm excited to share my projects with you!
-    </h2> 
-    <form id="greetingForm">
-        <label for="name">Enter your full name:</label>
-        <input type="text" id="name" name="name">
-        <label for="greeting">Choose a greeting:</label>
-        <select id="greeting" name="greeting">
-            <option value="Hello">Hello</option>
-            <option value="Hi">Hi</option>
-            <option value="What's up?">What's Up?</option>
-        </select>
-        <button type="submit">Greet me</button>
-        <p id="greetingMessage" class="form-message" aria-live="polite"></p>
-    </form>
+    <header class="site-header">
+        <a class="brand" href="#home" aria-label="Goodness portfolio home">
+            <span class="brand-mark">G</span>
+            <span>Goodness</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Portfolio sections">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">
+            <span class="theme-toggle-icon" aria-hidden="true">D</span>
+        </button>
+    </header>
+
+    <main>
+        <section class="hero section-band" id="home">
+            <div class="hero-copy reveal">
+                <p class="eyebrow">Junior Software Developer</p>
+                <h1>WELCOME! I am Goodness, and I build useful web experiences.</h1>
+                <p class="hero-text">
+                    I am growing into a software engineer by creating practical projects, improving my frontend skills,
+                    and documenting the process one step at a time.
+                </p>
+
+                <div class="hero-actions">
+                    <a class="button primary-button" href="#projects">View Projects</a>
+                    <a class="button secondary-button" href="#contact">Say Hello</a>
+                </div>
+
+                <ul class="quick-stats" aria-label="Portfolio highlights">
+                    <li>
+                        <strong>3+</strong>
+                        <span>Focus Areas</span>
+                    </li>
+                    <li>
+                        <strong>100%</strong>
+                        <span>Learning Mode</span>
+                    </li>
+                    <li>
+                        <strong>1</strong>
+                        <span>Portfolio Hub</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="hero-visual reveal" aria-label="Developer profile snapshot">
+                <div class="profile-orbit" aria-hidden="true"></div>
+                <div class="profile-panel">
+                    <div class="profile-topline">
+                        <span class="status-dot"></span>
+                        <span>Available for practice projects</span>
+                    </div>
+                    <div class="profile-avatar">G</div>
+                    <p class="profile-name">Goodness</p>
+                    <p class="profile-role">Frontend-focused junior developer</p>
+                    <div class="code-preview" aria-hidden="true">
+                        <span>const growth = "daily";</span>
+                        <span>build(project);</span>
+                        <span>ship(improvement);</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section split-section reveal" id="about">
+            <div>
+                <p class="eyebrow">About</p>
+                <h2>A portfolio that grows with the journey.</h2>
+            </div>
+            <div class="section-copy">
+                <p>
+                    I enjoy turning ideas into pages that are clear, responsive, and easy to use. Right now my focus is
+                    strengthening HTML, CSS, JavaScript, Git, and the habits that make a developer reliable.
+                </p>
+                <p>
+                    This site is both a portfolio and a progress log: a place to show what I can build today and improve
+                    what I understand tomorrow.
+                </p>
+            </div>
+        </section>
+
+        <section class="section reveal" id="skills">
+            <div class="section-heading">
+                <p class="eyebrow">Skills</p>
+                <h2>Tools I am building with.</h2>
+            </div>
+
+            <div class="skills-grid">
+                <article class="info-card">
+                    <span class="card-icon">HTML</span>
+                    <h3>Structure</h3>
+                    <p>Semantic pages, accessible forms, and content that is easy to scan.</p>
+                </article>
+                <article class="info-card">
+                    <span class="card-icon">CSS</span>
+                    <h3>Styling</h3>
+                    <p>Responsive layouts, polished spacing, reusable classes, and clean visual systems.</p>
+                </article>
+                <article class="info-card">
+                    <span class="card-icon">JS</span>
+                    <h3>Interaction</h3>
+                    <p>Form validation, filters, state changes, and small features that make pages feel alive.</p>
+                </article>
+                <article class="info-card">
+                    <span class="card-icon">Git</span>
+                    <h3>Workflow</h3>
+                    <p>Version control, commits, branches, and pushing work safely to GitHub.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section reveal" id="projects">
+            <div class="section-heading">
+                <p class="eyebrow">Selected Work</p>
+                <h2>Projects in progress.</h2>
+            </div>
+
+            <div class="filter-group" aria-label="Project filters">
+                <button class="filter-button is-active" type="button" data-filter="all">All</button>
+                <button class="filter-button" type="button" data-filter="web">Web</button>
+                <button class="filter-button" type="button" data-filter="practice">Practice</button>
+            </div>
+
+            <div class="project-grid">
+                <article class="project-card" data-category="web">
+                    <div class="project-thumb portfolio-thumb">
+                        <span>Portfolio</span>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-tag">Web</p>
+                        <h3>One-Page Portfolio</h3>
+                        <p>A responsive personal site with sections for skills, projects, learning progress, and contact.</p>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="practice">
+                    <div class="project-thumb greeting-thumb">
+                        <span>Greeting App</span>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-tag">Practice</p>
+                        <h3>Interactive Greeting Form</h3>
+                        <p>A JavaScript form that validates a visitor's name and creates a custom greeting.</p>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="web">
+                    <div class="project-thumb docs-thumb">
+                        <span>Progress</span>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-tag">Web</p>
+                        <h3>Learning Documentation</h3>
+                        <p>A growing record of practice, GitHub updates, and lessons from building this portfolio.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section split-section reveal" id="journey">
+            <div>
+                <p class="eyebrow">Journey</p>
+                <h2>What I am focused on next.</h2>
+            </div>
+            <ol class="timeline">
+                <li>
+                    <span>01</span>
+                    <div>
+                        <h3>Polish the fundamentals</h3>
+                        <p>Keep improving layout, accessibility, and clean JavaScript habits.</p>
+                    </div>
+                </li>
+                <li>
+                    <span>02</span>
+                    <div>
+                        <h3>Build stronger projects</h3>
+                        <p>Create projects that solve real problems and clearly explain the decisions behind them.</p>
+                    </div>
+                </li>
+                <li>
+                    <span>03</span>
+                    <div>
+                        <h3>Share progress</h3>
+                        <p>Use GitHub as a visible record of consistency, learning, and improvement.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <section class="section contact-section reveal" id="contact">
+            <div class="contact-copy">
+                <p class="eyebrow">Contact</p>
+                <h2>Let us make the page greet you properly.</h2>
+                <p>
+                    I am open to feedback, practice ideas, and small collaborations that help me grow.
+                </p>
+                <button class="copy-button" type="button" data-copy-email="goodness.dev@example.com">
+                    Copy Email
+                </button>
+                <p class="copy-message" data-copy-message aria-live="polite"></p>
+            </div>
+
+            <form id="greetingForm" class="contact-form">
+                <div class="form-field name-field">
+                    <label for="name">Enter your full name:</label>
+                    <input type="text" id="name" name="name" autocomplete="name" placeholder="Your name">
+                </div>
+
+                <div class="form-field">
+                    <label for="greeting">Choose a greeting:</label>
+                    <select id="greeting" name="greeting">
+                        <option value="Hello">Hello</option>
+                        <option value="Hi">Hi</option>
+                        <option value="What's up?">What's Up?</option>
+                    </select>
+                </div>
+
+                <button type="submit">Greet me</button>
+                <p id="greetingMessage" class="form-message" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+
+    <button class="back-to-top" type="button" data-back-to-top aria-label="Back to top">^</button>
+
+    <footer class="site-footer">
+        <p>&copy; <span data-current-year></span> Goodness. Built with HTML, CSS, and JavaScript.</p>
+        <a href="https://github.com/Goodie-codes" target="_blank" rel="noreferrer">GitHub</a>
+    </footer>
 </body>
 </html>
