@@ -9,6 +9,7 @@
   --accent-strong: #c4202b;
   --teal: #e04a4f;
   --gold: #b87935;
+  --signal: #ff2d3d;
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
 }
 
@@ -23,6 +24,7 @@
   --accent-strong: #df2e39;
   --teal: #ff6b6b;
   --gold: #c98940;
+  --signal: #ff4654;
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.36);
 }
 
@@ -40,6 +42,7 @@ body {
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background:
     linear-gradient(135deg, rgba(143, 16, 24, 0.34), transparent 38%),
+    radial-gradient(circle at 62% 24%, rgba(196, 32, 43, 0.22), transparent 28%),
     linear-gradient(215deg, rgba(42, 4, 7, 0.64), transparent 35%),
     var(--bg);
   color: var(--text);
@@ -50,6 +53,7 @@ body::before {
   position: fixed;
   inset: 0;
   background-image:
+    repeating-linear-gradient(0deg, rgba(255, 45, 61, 0.055) 0 1px, transparent 1px 7px),
     linear-gradient(var(--line) 1px, transparent 1px),
     linear-gradient(90deg, var(--line) 1px, transparent 1px);
   background-size: 80px 80px;
@@ -167,6 +171,7 @@ textarea {
 }
 
 .hero {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
   align-items: center;
@@ -175,9 +180,19 @@ textarea {
   padding: 56px 0 80px;
 }
 
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 26px auto auto -18px;
+  width: min(420px, 54vw);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--signal), transparent);
+  box-shadow: 0 0 34px rgba(255, 45, 61, 0.5);
+}
+
 .eyebrow {
   margin: 0 0 12px;
-  color: var(--teal);
+  color: var(--signal);
   font-size: 0.78rem;
   font-weight: 900;
   letter-spacing: 0;
@@ -197,6 +212,7 @@ h1 {
   font-size: clamp(2.5rem, 7vw, 5.8rem);
   line-height: 0.95;
   letter-spacing: 0;
+  text-shadow: 0 0 28px rgba(196, 32, 43, 0.42);
 }
 
 h2 {
@@ -224,6 +240,8 @@ h3 {
 .hero-text {
   max-width: 650px;
   font-size: 1.12rem;
+  border-left: 2px solid var(--accent-strong);
+  padding-left: 16px;
 }
 
 .hero-actions {
@@ -312,15 +330,29 @@ h3 {
 }
 
 .quick-stats li {
+  position: relative;
+  overflow: hidden;
   padding: 18px;
 }
 
+.quick-stats li::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255, 45, 61, 0.16), transparent 58%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
 .quick-stats strong {
+  position: relative;
   display: block;
   font-size: 1.55rem;
+  color: var(--signal);
 }
 
 .quick-stats span {
+  position: relative;
   color: var(--muted);
   font-size: 0.9rem;
 }
@@ -368,9 +400,22 @@ h3 {
   z-index: 1;
   width: min(100%, 360px);
   padding: 26px;
+  overflow: hidden;
+}
+
+.profile-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-top: 1px solid rgba(255, 45, 61, 0.45);
+  background:
+    linear-gradient(90deg, rgba(255, 45, 61, 0.14), transparent 38%),
+    repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 9px);
+  pointer-events: none;
 }
 
 .profile-topline {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -387,6 +432,7 @@ h3 {
 }
 
 .profile-avatar {
+  position: relative;
   display: grid;
   width: 118px;
   height: 118px;
@@ -404,6 +450,7 @@ h3 {
 
 .profile-name,
 .profile-role {
+  position: relative;
   text-align: center;
 }
 
@@ -418,13 +465,15 @@ h3 {
 }
 
 .code-preview {
+  position: relative;
   display: grid;
   gap: 8px;
   margin-top: 22px;
   padding: 16px;
   border-radius: 8px;
-  background: rgba(0, 0, 0, 0.24);
-  color: #d8fff8;
+  border: 1px solid rgba(255, 45, 61, 0.18);
+  background: rgba(0, 0, 0, 0.38);
+  color: #ffd5d8;
   font-family: "SFMono-Regular", Consolas, monospace;
   font-size: 0.86rem;
 }
