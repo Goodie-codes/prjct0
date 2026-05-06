@@ -136,4 +136,4 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
 });
 
 currentYear.textContent = new Date().getFullYear();
-setTheme(localStorage.getItem("portfolio-theme") || "dark");
+setTheme(localStorage.getItem("portfolio-theme") || (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light"));
