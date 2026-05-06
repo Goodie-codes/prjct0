@@ -236,29 +236,38 @@
                     <p id="greetingMessage" class="form-message" aria-live="polite"></p>
                 </form>
 
-                <form id="feedbackForm" class="contact-form feedback-form">
+                <form id="messageForm" class="contact-form message-form">
                     <div class="form-title">
-                        <p class="eyebrow">Feedback</p>
-                        <h3>Send me your thoughts.</h3>
+                        <p class="eyebrow">Message</p>
+                        <h3>Send feedback, inquiries, or opportunities.</h3>
                     </div>
 
                     <div class="form-field">
-                        <label for="feedbackName">Your name:</label>
-                        <input type="text" id="feedbackName" name="feedbackName" autocomplete="name" placeholder="Your name">
+                        <label for="visitorName">Your name:</label>
+                        <input type="text" id="visitorName" name="name" autocomplete="name" placeholder="Your name" required>
                     </div>
 
                     <div class="form-field">
-                        <label for="feedbackEmail">Your email:</label>
-                        <input type="email" id="feedbackEmail" name="feedbackEmail" autocomplete="email" placeholder="you@example.com">
+                        <label for="visitorEmail">Your email:</label>
+                        <input type="email" id="visitorEmail" name="email" autocomplete="email" placeholder="you@example.com" required>
                     </div>
 
                     <div class="form-field">
-                        <label for="feedbackMessage">Feedback:</label>
-                        <textarea id="feedbackMessage" name="feedbackMessage" rows="5" placeholder="What should I improve?"></textarea>
+                        <label for="messageType">Message type:</label>
+                        <select id="messageType" name="messageType">
+                            <option value="Feedback">Feedback</option>
+                            <option value="Inquiry">Inquiry</option>
+                            <option value="Job opportunity">Job opportunity</option>
+                        </select>
                     </div>
 
-                    <button type="submit">Send feedback</button>
-                    <p id="feedbackStatus" class="form-message" aria-live="polite"></p>
+                    <div class="form-field">
+                        <label for="messageBody">Message:</label>
+                        <textarea id="messageBody" name="message" rows="5" placeholder="Write your message here." required></textarea>
+                    </div>
+
+                    <button type="submit">Send message</button>
+                    <p id="messageStatus" class="form-message" aria-live="polite"></p>
                 </form>
             </div>
         </section>

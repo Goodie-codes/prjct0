@@ -10,12 +10,15 @@ const themeToggleIcon = document.querySelector(".theme-toggle-icon");
 const backToTopButton = document.querySelector("[data-back-to-top]");
 const copyEmailButton = document.querySelector("[data-copy-email]");
 const copyMessage = document.querySelector("[data-copy-message]");
-const feedbackForm = document.querySelector("#feedbackForm");
-const feedbackNameInput = document.querySelector("#feedbackName");
-const feedbackEmailInput = document.querySelector("#feedbackEmail");
-const feedbackMessageInput = document.querySelector("#feedbackMessage");
-const feedbackStatus = document.querySelector("#feedbackStatus");
+const messageForm = document.querySelector("#messageForm");
+const visitorNameInput = document.querySelector("#visitorName");
+const visitorEmailInput = document.querySelector("#visitorEmail");
+const messageTypeSelect = document.querySelector("#messageType");
+const messageBodyInput = document.querySelector("#messageBody");
+const messageStatus = document.querySelector("#messageStatus");
 const currentYear = document.querySelector("[data-current-year]");
+const contactEmail = copyEmailButton.dataset.copyEmail;
+const contactEndpoint = `https://formsubmit.co/ajax/${contactEmail}`;
 
 function buildGreeting(greeting, name) {
   if (greeting.startsWith("What's")) {
@@ -51,18 +54,36 @@ function showCopyMessage(message) {
   }, 2200);
 }
 
-function showFeedbackStatus(message, isError = false) {
-  feedbackStatus.textContent = message;
-  feedbackStatus.classList.toggle("is-error", isError);
+function showMessageStatus(message, isError = false) {
+  messageStatus.textContent = message;
+  messageStatus.classList.toggle("is-error", isError);
 }
 
-function buildFeedbackEmail(name, email, message) {
-  const senderName = name || "Portfolio visitor";
-  const senderEmail = email || "Not provided";
-  const subject = `Portfolio feedback from ${senderName}`;
-  const body = `Name: ${senderName}\nEmail: ${senderEmail}\n\nFeedback:\n${message}`;
+async function sendContactMessage(name, email, messageType, message) {
+  const response = await fetch(contactEndpoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      name,
+      email,
+      _replyto: email,
+      _subject: `Portfolio ${messageType} from ${name}`,
+      _template: "table",
+      messageType,
+      message,
+    }),
+  });
 
-  return `mailto:${copyEmailButton.dataset.copyEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const data = await response.json();
+
+  if (!response.ok || data.success === false || data.success === "false") {
+    throw new Error(data.message || "The message could not be sent.");
+  }
+
+  return data;
 }
 
 greetingForm.addEventListener("submit", (event) => {
@@ -139,21 +160,35 @@ copyEmailButton.addEventListener("click", async () => {
   }
 });
 
-feedbackForm.addEventListener("submit", (event) => {
+messageForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const name = feedbackNameInput.value.trim();
-  const email = feedbackEmailInput.value.trim();
-  const message = feedbackMessageInput.value.trim();
+  const name = visitorNameInput.value.trim();
+  const email = visitorEmailInput.value.trim();
+  const messageType = messageTypeSelect.value;
+  const message = messageBodyInput.value.trim();
+  const submitButton = messageForm.querySelector("button[type='submit']");
 
   if (message === "") {
-    showFeedbackStatus("Please write your feedback first.", true);
-    feedbackMessageInput.focus();
+    showMessageStatus("Please write your message first.", true);
+    messageBodyInput.focus();
     return;
   }
 
-  window.location.href = buildFeedbackEmail(name, email, message);
-  showFeedbackStatus("Opening your email app.");
+  submitButton.disabled = true;
+  submitButton.textContent = "Sending...";
+  showMessageStatus("Sending your message...");
+
+  try {
+    await sendContactMessage(name, email, messageType, message);
+    messageForm.reset();
+    showMessageStatus("Message sent. Thank you.");
+  } catch (error) {
+    showMessageStatus("Message could not send yet. Please try again in a moment.", true);
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = "Send message";
+  }
 });
 
 document.querySelectorAll(".nav-links a").forEach((link) => {
