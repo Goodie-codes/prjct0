@@ -614,6 +614,11 @@ h3 {
   padding: 26px;
 }
 
+.hidden-field,
+.hidden-frame {
+  display: none;
+}
+
 .form-title {
   display: grid;
   gap: 4px;
