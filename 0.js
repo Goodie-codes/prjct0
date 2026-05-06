@@ -13,8 +13,8 @@ const copyMessage = document.querySelector("[data-copy-message]");
 const currentYear = document.querySelector("[data-current-year]");
 
 function buildGreeting(greeting, name) {
-  if (greeting === "What's up?") {
-    return `What's up, ${name}?`;
+  if (greeting.startsWith("What's")) {
+    return `${greeting}, ${name}?`;
   }
 
   return `${greeting}, ${name}!`;
@@ -35,7 +35,7 @@ function setProjectFilter(filter) {
 function setTheme(theme) {
   document.documentElement.dataset.theme = theme;
   localStorage.setItem("portfolio-theme", theme);
-  themeToggleIcon.textContent = theme === "light" ? "L" : "D";
+  themeToggleIcon.textContent = theme === "light" ? "R" : "D";
 }
 
 function showCopyMessage(message) {

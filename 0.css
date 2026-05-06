@@ -1,29 +1,29 @@
 :root {
-  --bg: #0b0d10;
-  --surface: #14181f;
-  --surface-strong: #1d232d;
-  --text: #f7f3ea;
-  --muted: #b8c0ca;
-  --line: rgba(255, 255, 255, 0.12);
-  --accent: #d44935;
-  --accent-strong: #f06f3f;
-  --teal: #2ec4b6;
-  --gold: #f4b942;
-  --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  --bg: #030101;
+  --surface: #0f0607;
+  --surface-strong: #1a080a;
+  --text: #fff4f1;
+  --muted: #c6aaa6;
+  --line: rgba(255, 222, 216, 0.12);
+  --accent: #8f1018;
+  --accent-strong: #c4202b;
+  --teal: #e04a4f;
+  --gold: #b87935;
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
 }
 
 :root[data-theme="light"] {
-  --bg: #f5f1e8;
-  --surface: #ffffff;
-  --surface-strong: #ebe3d6;
-  --text: #151515;
-  --muted: #5d646d;
-  --line: rgba(21, 21, 21, 0.13);
-  --accent: #b93525;
-  --accent-strong: #d75d2e;
-  --teal: #087f78;
-  --gold: #b67a00;
-  --shadow: 0 24px 70px rgba(52, 41, 28, 0.16);
+  --bg: #090203;
+  --surface: #160809;
+  --surface-strong: #240c0f;
+  --text: #fff7f5;
+  --muted: #d4b9b3;
+  --line: rgba(255, 232, 226, 0.14);
+  --accent: #a8121e;
+  --accent-strong: #df2e39;
+  --teal: #ff6b6b;
+  --gold: #c98940;
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.36);
 }
 
 * {
@@ -39,8 +39,8 @@ body {
   min-height: 100vh;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background:
-    linear-gradient(135deg, rgba(212, 73, 53, 0.16), transparent 34%),
-    linear-gradient(215deg, rgba(46, 196, 182, 0.13), transparent 32%),
+    linear-gradient(135deg, rgba(143, 16, 24, 0.34), transparent 38%),
+    linear-gradient(215deg, rgba(42, 4, 7, 0.64), transparent 35%),
     var(--bg);
   color: var(--text);
 }
@@ -85,7 +85,7 @@ select {
 .brand,
 .nav-links,
 .theme-toggle {
-  background: rgba(20, 24, 31, 0.78);
+  background: rgba(15, 6, 7, 0.88);
   border: 1px solid var(--line);
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
 }
@@ -93,7 +93,7 @@ select {
 :root[data-theme="light"] .brand,
 :root[data-theme="light"] .nav-links,
 :root[data-theme="light"] .theme-toggle {
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(22, 8, 9, 0.88);
 }
 
 .brand {
@@ -291,7 +291,7 @@ h3 {
 .profile-panel {
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(20, 24, 31, 0.78);
+  background: rgba(15, 6, 7, 0.86);
   box-shadow: var(--shadow);
 }
 
@@ -301,7 +301,7 @@ h3 {
 :root[data-theme="light"] .contact-form,
 :root[data-theme="light"] .timeline li,
 :root[data-theme="light"] .profile-panel {
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(22, 8, 9, 0.88);
 }
 
 .quick-stats li {
@@ -329,7 +329,7 @@ h3 {
   position: absolute;
   width: min(88%, 380px);
   aspect-ratio: 1;
-  border: 1px solid rgba(46, 196, 182, 0.34);
+  border: 1px solid rgba(196, 32, 43, 0.34);
   border-radius: 999px;
 }
 
@@ -341,7 +341,7 @@ h3 {
   height: 18px;
   border-radius: 999px;
   background: var(--gold);
-  box-shadow: 0 0 30px rgba(244, 185, 66, 0.7);
+  box-shadow: 0 0 30px rgba(184, 121, 53, 0.58);
 }
 
 .profile-orbit::before {
@@ -353,7 +353,7 @@ h3 {
   bottom: 14%;
   left: 10%;
   background: var(--teal);
-  box-shadow: 0 0 30px rgba(46, 196, 182, 0.7);
+  box-shadow: 0 0 30px rgba(224, 74, 79, 0.58);
 }
 
 .profile-panel {
@@ -376,7 +376,7 @@ h3 {
   height: 10px;
   border-radius: 999px;
   background: var(--teal);
-  box-shadow: 0 0 18px rgba(46, 196, 182, 0.75);
+  box-shadow: 0 0 18px rgba(224, 74, 79, 0.68);
 }
 
 .profile-avatar {
@@ -388,7 +388,7 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 999px;
   background:
-    linear-gradient(135deg, rgba(212, 73, 53, 0.9), rgba(46, 196, 182, 0.8)),
+    linear-gradient(135deg, rgba(143, 16, 24, 0.96), rgba(196, 32, 43, 0.84)),
     var(--surface-strong);
   color: #ffffff;
   font-size: 4rem;
@@ -423,8 +423,8 @@ h3 {
 }
 
 :root[data-theme="light"] .code-preview {
-  background: rgba(20, 24, 31, 0.08);
-  color: #08423f;
+  background: rgba(0, 0, 0, 0.24);
+  color: #ffd9d4;
 }
 
 .section {
@@ -464,7 +464,7 @@ h3 {
   align-items: center;
   padding: 6px 9px;
   border-radius: 8px;
-  background: rgba(46, 196, 182, 0.13);
+  background: rgba(196, 32, 43, 0.18);
   color: var(--teal);
   font-size: 0.74rem;
   font-weight: 900;
@@ -519,19 +519,19 @@ h3 {
 
 .portfolio-thumb {
   background:
-    linear-gradient(135deg, rgba(212, 73, 53, 0.86), rgba(20, 24, 31, 0.9)),
+    linear-gradient(135deg, rgba(143, 16, 24, 0.9), rgba(8, 2, 3, 0.96)),
     repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0 10px, transparent 10px 20px);
 }
 
 .greeting-thumb {
   background:
-    linear-gradient(135deg, rgba(46, 196, 182, 0.82), rgba(20, 24, 31, 0.92)),
+    linear-gradient(135deg, rgba(196, 32, 43, 0.86), rgba(8, 2, 3, 0.96)),
     radial-gradient(circle at 70% 20%, rgba(255, 255, 255, 0.24), transparent 24%);
 }
 
 .docs-thumb {
   background:
-    linear-gradient(135deg, rgba(244, 185, 66, 0.82), rgba(20, 24, 31, 0.9)),
+    linear-gradient(135deg, rgba(184, 121, 53, 0.7), rgba(8, 2, 3, 0.96)),
     linear-gradient(90deg, rgba(255, 255, 255, 0.18), transparent);
 }
 
@@ -564,7 +564,7 @@ h3 {
   height: 44px;
   place-items: center;
   border-radius: 8px;
-  background: rgba(244, 185, 66, 0.14);
+  background: rgba(196, 32, 43, 0.16);
   color: var(--gold);
   font-weight: 900;
 }
@@ -642,7 +642,7 @@ h3 {
 .contact-form input:focus,
 .contact-form select:focus {
   border-color: var(--teal);
-  box-shadow: 0 0 0 4px rgba(46, 196, 182, 0.14);
+  box-shadow: 0 0 0 4px rgba(196, 32, 43, 0.18);
   transform: translateY(-1px);
 }
 
