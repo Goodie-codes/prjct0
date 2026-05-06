@@ -208,32 +208,59 @@
                 <p>
                     I am open to feedback, practice ideas, and small collaborations that help me grow.
                 </p>
-                <button class="copy-button" type="button" data-copy-email="goodness.dev@example.com">
+                <button class="copy-button" type="button" data-copy-email="goodnessezekiel55@gmail.com">
                     Copy Email
                 </button>
                 <p class="copy-message" data-copy-message aria-live="polite"></p>
             </div>
 
-            <form id="greetingForm" class="contact-form">
-                <div class="form-field name-field">
-                    <label for="name">Enter your full name:</label>
-                    <input type="text" id="name" name="name" autocomplete="name" placeholder="Your name">
-                </div>
+            <div class="contact-stack">
+                <form id="greetingForm" class="contact-form">
+                    <div class="form-field name-field">
+                        <label for="name">Enter your full name:</label>
+                        <input type="text" id="name" name="name" autocomplete="name" placeholder="Your name">
+                    </div>
 
-                <div class="form-field">
-                    <label for="greeting">Choose a greeting:</label>
-                    <select id="greeting" name="greeting">
-                        <option value="Hey superstar">Hi</option>
-                        <option value="Yo legend">Hey</option>
-                        <option value="What's good">What's good</option>
-                        <option value="Howdy coder">Howdy</option>
-                        <option value="Greetings champion">Greetings</option>
-                    </select>
-                </div>
+                    <div class="form-field">
+                        <label for="greeting">Choose a greeting:</label>
+                        <select id="greeting" name="greeting">
+                            <option value="Hey superstar">Hi</option>
+                            <option value="Yo legend">Hey</option>
+                            <option value="What's good">What's good</option>
+                            <option value="Howdy coder">Howdy</option>
+                            <option value="Greetings champion">Greetings</option>
+                        </select>
+                    </div>
 
-                <button type="submit">Greet me</button>
-                <p id="greetingMessage" class="form-message" aria-live="polite"></p>
-            </form>
+                    <button type="submit">Greet me</button>
+                    <p id="greetingMessage" class="form-message" aria-live="polite"></p>
+                </form>
+
+                <form id="feedbackForm" class="contact-form feedback-form">
+                    <div class="form-title">
+                        <p class="eyebrow">Feedback</p>
+                        <h3>Send me your thoughts.</h3>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="feedbackName">Your name:</label>
+                        <input type="text" id="feedbackName" name="feedbackName" autocomplete="name" placeholder="Your name">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="feedbackEmail">Your email:</label>
+                        <input type="email" id="feedbackEmail" name="feedbackEmail" autocomplete="email" placeholder="you@example.com">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="feedbackMessage">Feedback:</label>
+                        <textarea id="feedbackMessage" name="feedbackMessage" rows="5" placeholder="What should I improve?"></textarea>
+                    </div>
+
+                    <button type="submit">Send feedback</button>
+                    <p id="feedbackStatus" class="form-message" aria-live="polite"></p>
+                </form>
+            </div>
         </section>
     </main>
 

@@ -10,6 +10,11 @@ const themeToggleIcon = document.querySelector(".theme-toggle-icon");
 const backToTopButton = document.querySelector("[data-back-to-top]");
 const copyEmailButton = document.querySelector("[data-copy-email]");
 const copyMessage = document.querySelector("[data-copy-message]");
+const feedbackForm = document.querySelector("#feedbackForm");
+const feedbackNameInput = document.querySelector("#feedbackName");
+const feedbackEmailInput = document.querySelector("#feedbackEmail");
+const feedbackMessageInput = document.querySelector("#feedbackMessage");
+const feedbackStatus = document.querySelector("#feedbackStatus");
 const currentYear = document.querySelector("[data-current-year]");
 
 function buildGreeting(greeting, name) {
@@ -44,6 +49,20 @@ function showCopyMessage(message) {
   window.setTimeout(() => {
     copyMessage.textContent = "";
   }, 2200);
+}
+
+function showFeedbackStatus(message, isError = false) {
+  feedbackStatus.textContent = message;
+  feedbackStatus.classList.toggle("is-error", isError);
+}
+
+function buildFeedbackEmail(name, email, message) {
+  const senderName = name || "Portfolio visitor";
+  const senderEmail = email || "Not provided";
+  const subject = `Portfolio feedback from ${senderName}`;
+  const body = `Name: ${senderName}\nEmail: ${senderEmail}\n\nFeedback:\n${message}`;
+
+  return `mailto:${copyEmailButton.dataset.copyEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
 greetingForm.addEventListener("submit", (event) => {
@@ -118,6 +137,23 @@ copyEmailButton.addEventListener("click", async () => {
   } catch (error) {
     showCopyMessage(email);
   }
+});
+
+feedbackForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const name = feedbackNameInput.value.trim();
+  const email = feedbackEmailInput.value.trim();
+  const message = feedbackMessageInput.value.trim();
+
+  if (message === "") {
+    showFeedbackStatus("Please write your feedback first.", true);
+    feedbackMessageInput.focus();
+    return;
+  }
+
+  window.location.href = buildFeedbackEmail(name, email, message);
+  showFeedbackStatus("Opening your email app.");
 });
 
 document.querySelectorAll(".nav-links a").forEach((link) => {
