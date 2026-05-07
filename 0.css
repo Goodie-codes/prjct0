@@ -297,6 +297,34 @@ h1 {
   text-shadow: 0 0 28px rgba(196, 32, 43, 0.42);
 }
 
+.typewriter::after {
+  content: "";
+  display: inline-block;
+  width: 0.08em;
+  height: 0.78em;
+  margin-left: 0.08em;
+  background: var(--signal);
+  box-shadow: 0 0 18px rgba(255, 45, 61, 0.55);
+  transform: translateY(0.08em);
+  animation: typewriter-caret 0.72s steps(2, start) infinite;
+}
+
+.typewriter.has-typed::after {
+  animation-duration: 1s;
+}
+
+@keyframes typewriter-caret {
+  0%,
+  45% {
+    opacity: 1;
+  }
+
+  46%,
+  100% {
+    opacity: 0;
+  }
+}
+
 h2 {
   margin-bottom: 0;
   font-size: clamp(2rem, 4vw, 3.6rem);

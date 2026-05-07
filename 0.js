@@ -5,6 +5,7 @@ const themeToggle = document.querySelector("[data-theme-toggle]");
 const themeToggleIcon = document.querySelector(".theme-toggle-icon");
 const backToTopButton = document.querySelector("[data-back-to-top]");
 const currentYear = document.querySelector("[data-current-year]");
+const heroIntro = document.querySelector(".hero h1");
 let themeAnimationTimer;
 
 function setProjectFilter(filter) {
@@ -36,6 +37,41 @@ function setTheme(theme, shouldAnimate = false) {
   if (shouldAnimate) {
     playThemeSwitchAnimation();
   }
+}
+
+function typeHeroIntro() {
+  if (heroIntro === null) {
+    return;
+  }
+
+  const introText = heroIntro.textContent.trim();
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  heroIntro.setAttribute("aria-label", introText);
+
+  if (prefersReducedMotion) {
+    heroIntro.textContent = introText;
+    return;
+  }
+
+  heroIntro.textContent = "";
+  heroIntro.classList.add("typewriter");
+
+  let characterIndex = 0;
+
+  function typeNextCharacter() {
+    characterIndex += 1;
+    heroIntro.textContent = introText.slice(0, characterIndex);
+
+    if (characterIndex < introText.length) {
+      window.setTimeout(typeNextCharacter, 48);
+      return;
+    }
+
+    heroIntro.classList.add("has-typed");
+  }
+
+  window.setTimeout(typeNextCharacter, 360);
 }
 
 filterButtons.forEach((button) => {
@@ -96,3 +132,4 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
 
 currentYear.textContent = new Date().getFullYear();
 setTheme(localStorage.getItem("portfolio-theme") || "dark");
+typeHeroIntro();
