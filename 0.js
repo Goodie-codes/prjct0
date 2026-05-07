@@ -1,6 +1,7 @@
 const filterButtons = document.querySelectorAll(".filter-button");
 const projectCards = document.querySelectorAll(".project-card");
 const revealItems = document.querySelectorAll(".reveal");
+const siteHeader = document.querySelector(".site-header");
 const themeToggle = document.querySelector("[data-theme-toggle]");
 const themeToggleIcon = document.querySelector(".theme-toggle-icon");
 const backToTopButton = document.querySelector("[data-back-to-top]");
@@ -13,6 +14,15 @@ function setProjectFilter(filter) {
     const shouldShow = filter === "all" || card.dataset.category === filter;
     card.classList.toggle("is-hidden", !shouldShow);
   });
+}
+
+function updateNavAnchorOffset() {
+  if (siteHeader === null) {
+    return;
+  }
+
+  const offset = Math.ceil(siteHeader.getBoundingClientRect().height + 18);
+  document.documentElement.style.setProperty("--nav-anchor-offset", `${offset}px`);
 }
 
 function playThemeSwitchAnimation() {
@@ -123,6 +133,8 @@ window.addEventListener("scroll", () => {
   backToTopButton.classList.toggle("is-visible", shouldShowBackToTop);
 });
 
+window.addEventListener("resize", updateNavAnchorOffset);
+
 backToTopButton.addEventListener("click", () => {
   window.scrollTo({
     top: 0,
@@ -142,4 +154,5 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
 
 currentYear.textContent = new Date().getFullYear();
 setTheme(localStorage.getItem("portfolio-theme") || "dark");
+updateNavAnchorOffset();
 typeHeroIntro();
