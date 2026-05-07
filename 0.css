@@ -14,18 +14,18 @@
 }
 
 :root[data-theme="light"] {
-  --bg: #090203;
-  --surface: #160809;
-  --surface-strong: #240c0f;
-  --text: #fff7f5;
-  --muted: #d4b9b3;
-  --line: rgba(255, 232, 226, 0.14);
-  --accent: #a8121e;
-  --accent-strong: #df2e39;
-  --teal: #ff6b6b;
-  --gold: #c98940;
-  --signal: #ff4654;
-  --shadow: 0 24px 70px rgba(0, 0, 0, 0.36);
+  --bg: #fffafa;
+  --surface: #ffffff;
+  --surface-strong: #fff1f2;
+  --text: #4a060b;
+  --muted: #8a3a3f;
+  --line: rgba(143, 16, 24, 0.16);
+  --accent: #8f1018;
+  --accent-strong: #c4202b;
+  --teal: #b91c1c;
+  --gold: #925f19;
+  --signal: #c4202b;
+  --shadow: 0 24px 70px rgba(143, 16, 24, 0.12);
 }
 
 * {
@@ -46,6 +46,7 @@ body {
     linear-gradient(215deg, rgba(42, 4, 7, 0.64), transparent 35%),
     var(--bg);
   color: var(--text);
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
 body::before {
@@ -59,6 +60,22 @@ body::before {
   background-size: 80px 80px;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.48), transparent 68%);
   pointer-events: none;
+}
+
+:root[data-theme="light"] body {
+  background:
+    linear-gradient(135deg, rgba(196, 32, 43, 0.12), transparent 38%),
+    radial-gradient(circle at 62% 24%, rgba(196, 32, 43, 0.12), transparent 28%),
+    linear-gradient(215deg, rgba(143, 16, 24, 0.08), transparent 35%),
+    var(--bg);
+}
+
+:root[data-theme="light"] body::before {
+  background-image:
+    repeating-linear-gradient(0deg, rgba(196, 32, 43, 0.035) 0 1px, transparent 1px 7px),
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.18), transparent 68%);
 }
 
 a {
@@ -98,7 +115,7 @@ textarea {
 :root[data-theme="light"] .brand,
 :root[data-theme="light"] .nav-links,
 :root[data-theme="light"] .theme-toggle {
-  background: rgba(22, 8, 9, 0.88);
+  background: rgba(255, 255, 255, 0.92);
 }
 
 .brand {
@@ -322,7 +339,7 @@ h3 {
 :root[data-theme="light"] .contact-form,
 :root[data-theme="light"] .timeline li,
 :root[data-theme="light"] .profile-panel {
-  background: rgba(22, 8, 9, 0.88);
+  background: rgba(255, 255, 255, 0.94);
 }
 
 .quick-stats li {
@@ -410,6 +427,13 @@ h3 {
   pointer-events: none;
 }
 
+:root[data-theme="light"] .profile-panel::before {
+  border-top-color: rgba(196, 32, 43, 0.28);
+  background:
+    linear-gradient(90deg, rgba(196, 32, 43, 0.08), transparent 38%),
+    repeating-linear-gradient(180deg, rgba(196, 32, 43, 0.035) 0 1px, transparent 1px 9px);
+}
+
 .profile-topline {
   position: relative;
   display: flex;
@@ -475,8 +499,8 @@ h3 {
 }
 
 :root[data-theme="light"] .code-preview {
-  background: rgba(0, 0, 0, 0.24);
-  color: #ffd9d4;
+  background: #fff7f7;
+  color: var(--text);
 }
 
 .section {
@@ -585,6 +609,28 @@ h3 {
   background:
     linear-gradient(135deg, rgba(184, 121, 53, 0.7), rgba(8, 2, 3, 0.96)),
     linear-gradient(90deg, rgba(255, 255, 255, 0.18), transparent);
+}
+
+:root[data-theme="light"] .project-thumb {
+  color: var(--text);
+}
+
+:root[data-theme="light"] .portfolio-thumb {
+  background:
+    linear-gradient(135deg, rgba(196, 32, 43, 0.16), rgba(255, 255, 255, 0.94)),
+    repeating-linear-gradient(90deg, rgba(196, 32, 43, 0.08) 0 10px, transparent 10px 20px);
+}
+
+:root[data-theme="light"] .greeting-thumb {
+  background:
+    linear-gradient(135deg, rgba(196, 32, 43, 0.2), rgba(255, 255, 255, 0.95)),
+    radial-gradient(circle at 70% 20%, rgba(196, 32, 43, 0.2), transparent 24%);
+}
+
+:root[data-theme="light"] .docs-thumb {
+  background:
+    linear-gradient(135deg, rgba(184, 121, 53, 0.16), rgba(255, 255, 255, 0.95)),
+    linear-gradient(90deg, rgba(196, 32, 43, 0.12), transparent);
 }
 
 .project-content {

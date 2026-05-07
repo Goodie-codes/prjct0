@@ -16,7 +16,8 @@ function setProjectFilter(filter) {
 function setTheme(theme) {
   document.documentElement.dataset.theme = theme;
   localStorage.setItem("portfolio-theme", theme);
-  themeToggleIcon.textContent = theme === "light" ? "R" : "D";
+  themeToggleIcon.textContent = theme === "dark" ? "D" : "L";
+  themeToggle.setAttribute("aria-label", `${theme === "dark" ? "Dark" : "Light"} theme active`);
 }
 
 filterButtons.forEach((button) => {
@@ -76,4 +77,4 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
 });
 
 currentYear.textContent = new Date().getFullYear();
-setTheme(localStorage.getItem("portfolio-theme") || (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light"));
+setTheme(localStorage.getItem("portfolio-theme") || "dark");
