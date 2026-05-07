@@ -229,7 +229,6 @@ h3 {
 
 .hero-text,
 .section-copy,
-.contact-copy p,
 .info-card p,
 .project-content p,
 .timeline p {
@@ -253,7 +252,6 @@ h3 {
 
 .button,
 .contact-form button,
-.copy-button,
 .filter-button {
   min-height: 44px;
   border-radius: 8px;
@@ -278,7 +276,6 @@ h3 {
 }
 
 .secondary-button,
-.copy-button,
 .filter-button {
   background: var(--surface);
   border-color: var(--line);
@@ -287,7 +284,6 @@ h3 {
 
 .button:hover,
 .contact-form button:hover,
-.copy-button:hover,
 .filter-button:hover {
   transform: translateY(-2px);
 }
@@ -631,29 +627,15 @@ h3 {
 
 .contact-section {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.8fr);
-  gap: 36px;
-  align-items: start;
+  grid-template-columns: minmax(0, 560px);
+  justify-content: center;
   padding-bottom: 70px;
   border-top: 1px solid var(--line);
 }
 
-.copy-button {
-  padding: 11px 15px;
-}
-
-.copy-message {
-  min-height: 24px;
-  margin: 12px 0 0;
-  color: var(--teal);
-  font-weight: 800;
-}
-
 .contact-stack {
   display: grid;
-  gap: 18px;
-  justify-self: end;
-  width: min(100%, 420px);
+  width: 100%;
 }
 
 .contact-form {
@@ -681,12 +663,6 @@ h3 {
   gap: 9px;
 }
 
-.name-field {
-  width: min(100%, 300px);
-  justify-self: center;
-  text-align: center;
-}
-
 .contact-form label {
   color: var(--text);
   font-size: 0.94rem;
@@ -710,10 +686,6 @@ h3 {
 .contact-form textarea {
   min-height: 130px;
   resize: vertical;
-}
-
-.name-field input {
-  text-align: center;
 }
 
 .contact-form input::placeholder,
@@ -744,20 +716,6 @@ h3 {
   justify-self: center;
   padding: 13px 16px;
   border: 0;
-}
-
-.form-message {
-  min-height: 26px;
-  margin: 0;
-  color: var(--teal);
-  font-size: 0.98rem;
-  font-weight: 800;
-  line-height: 1.5;
-  text-align: center;
-}
-
-.form-message.is-error {
-  color: #ffb4a8;
 }
 
 .back-to-top {
