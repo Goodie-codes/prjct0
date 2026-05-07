@@ -39,18 +39,27 @@ function setTheme(theme, shouldAnimate = false) {
   }
 }
 
+function revealPageAfterIntro() {
+  document.documentElement.classList.remove("is-intro-typing");
+  document.documentElement.classList.add("has-intro-typed");
+}
+
 function typeHeroIntro() {
   if (heroIntro === null) {
+    revealPageAfterIntro();
     return;
   }
 
   const introText = heroIntro.textContent.trim();
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const heroRevealContainer = heroIntro.closest(".reveal");
 
+  heroRevealContainer?.classList.add("is-visible");
   heroIntro.setAttribute("aria-label", introText);
 
   if (prefersReducedMotion) {
     heroIntro.textContent = introText;
+    revealPageAfterIntro();
     return;
   }
 
@@ -69,6 +78,7 @@ function typeHeroIntro() {
     }
 
     heroIntro.classList.add("has-typed");
+    window.setTimeout(revealPageAfterIntro, 260);
   }
 
   window.setTimeout(typeNextCharacter, 360);

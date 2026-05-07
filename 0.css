@@ -167,6 +167,7 @@ textarea {
   margin: 0 auto;
   padding: 16px 0;
   backdrop-filter: blur(18px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
 .brand,
@@ -260,6 +261,40 @@ textarea {
   gap: 48px;
   min-height: calc(100vh - 76px);
   padding: 56px 0 80px;
+}
+
+:root.is-intro-typing {
+  overflow: hidden;
+}
+
+:root.is-intro-typing .site-header,
+:root.is-intro-typing .hero .eyebrow,
+:root.is-intro-typing .hero-text,
+:root.is-intro-typing .hero-actions,
+:root.is-intro-typing .quick-stats,
+:root.is-intro-typing .hero-visual,
+:root.is-intro-typing main > section:not(.hero),
+:root.is-intro-typing .back-to-top,
+:root.is-intro-typing .site-footer {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(14px);
+}
+
+:root.is-intro-typing .hero-copy {
+  opacity: 1;
+  transform: none;
+}
+
+.hero .eyebrow,
+.hero-text,
+.hero-actions,
+.quick-stats,
+.hero-visual,
+main > section:not(.hero),
+.back-to-top,
+.site-footer {
+  transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
 .hero::before {
