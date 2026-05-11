@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Goodness, a junior software developer building clean one-page web experiences and learning in public.">
+    <meta name="description" content="Goodness, a junior software developer building responsive front-end projects, clean interfaces, and practical JavaScript interactions.">
     <title>Goodness | Junior Software Developer</title>
     <script>document.documentElement.classList.add("is-intro-typing");</script>
     <link rel="stylesheet" href="0.css">
@@ -19,7 +19,10 @@
         <nav class="nav-links" aria-label="Portfolio sections">
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
+            <a href="#services">Services</a>
             <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#faq">FAQ</a>
             <a href="#contact">Contact</a>
         </nav>
 
@@ -45,12 +48,12 @@
 
                 <ul class="quick-stats" aria-label="Portfolio highlights">
                     <li>
-                        <strong>01</strong>
-                        <span>Major Project</span>
+                        <strong>03</strong>
+                        <span>Portfolio Pieces</span>
                     </li>
                     <li>
-                        <strong>RED</strong>
-                        <span>System Theme</span>
+                        <strong>4+</strong>
+                        <span>Core Tools</span>
                     </li>
                     <li>
                         <strong>LIVE</strong>
@@ -125,6 +128,31 @@
             </div>
         </section>
 
+        <section class="section reveal" id="services">
+            <div class="section-heading">
+                <p class="eyebrow">Services</p>
+                <h2>Practical front-end help.</h2>
+            </div>
+
+            <div class="services-grid">
+                <article class="service-card">
+                    <span class="card-icon">01</span>
+                    <h3>Portfolio and landing pages</h3>
+                    <p>Responsive one-page websites with clear structure, strong spacing, and polished section flow.</p>
+                </article>
+                <article class="service-card">
+                    <span class="card-icon">02</span>
+                    <h3>Interface cleanup</h3>
+                    <p>Small UI improvements for layout, mobile behavior, buttons, forms, and readable content hierarchy.</p>
+                </article>
+                <article class="service-card">
+                    <span class="card-icon">03</span>
+                    <h3>JavaScript interactions</h3>
+                    <p>Filters, accordions, form states, counters, and simple features that make static pages feel useful.</p>
+                </article>
+            </div>
+        </section>
+
         <section class="section reveal" id="projects">
             <div class="section-heading">
                 <p class="eyebrow">Selected Work</p>
@@ -146,6 +174,10 @@
                         <p class="project-tag">Web</p>
                         <h3>One-Page Portfolio</h3>
                         <p>A responsive personal site with sections for skills, projects, learning progress, and contact.</p>
+                        <button class="text-button project-details-toggle" type="button" aria-expanded="false">View details</button>
+                        <div class="project-details" hidden>
+                            <p>Focus areas: responsive layout, theme switching, project filtering, and accessible page sections.</p>
+                        </div>
                     </div>
                 </article>
 
@@ -157,6 +189,10 @@
                         <p class="project-tag">Practice</p>
                         <h3>Interactive Greeting Form</h3>
                         <p>A JavaScript form that validates a visitor's name and creates a custom greeting.</p>
+                        <button class="text-button project-details-toggle" type="button" aria-expanded="false">View details</button>
+                        <div class="project-details" hidden>
+                            <p>Focus areas: input validation, friendly feedback, DOM updates, and simple form state handling.</p>
+                        </div>
                     </div>
                 </article>
 
@@ -168,7 +204,35 @@
                         <p class="project-tag">Web</p>
                         <h3>Learning Documentation</h3>
                         <p>A growing record of practice, GitHub updates, and lessons from building this portfolio.</p>
+                        <button class="text-button project-details-toggle" type="button" aria-expanded="false">View details</button>
+                        <div class="project-details" hidden>
+                            <p>Focus areas: progress tracking, clear writing, version control habits, and visible iteration.</p>
+                        </div>
                     </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section split-section reveal" id="experience">
+            <div>
+                <p class="eyebrow">Experience</p>
+                <h2>Proof of steady growth.</h2>
+            </div>
+            <div class="experience-grid">
+                <article class="experience-card">
+                    <strong>Frontend</strong>
+                    <span>HTML, CSS, JavaScript</span>
+                    <p>Building pages that stay readable, responsive, and easy to maintain as the content grows.</p>
+                </article>
+                <article class="experience-card">
+                    <strong>Workflow</strong>
+                    <span>Git and GitHub</span>
+                    <p>Using commits, branches, and project notes to keep the work organized and reviewable.</p>
+                </article>
+                <article class="experience-card">
+                    <strong>Reliability</strong>
+                    <span>Accessibility and polish</span>
+                    <p>Checking forms, focus states, mobile layouts, and small interactions before calling a page done.</p>
                 </article>
             </div>
         </section>
@@ -203,7 +267,49 @@
             </ol>
         </section>
 
+        <section class="section split-section reveal" id="faq">
+            <div>
+                <p class="eyebrow">FAQ</p>
+                <h2>Quick answers for collaborators.</h2>
+            </div>
+            <div class="faq-list">
+                <article class="faq-item">
+                    <button class="faq-question" type="button" aria-expanded="false">
+                        <span>What kind of work are you open to?</span>
+                        <span aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer" hidden>
+                        <p>Portfolio pages, landing pages, UI cleanup, small JavaScript features, and beginner-friendly team tasks.</p>
+                    </div>
+                </article>
+                <article class="faq-item">
+                    <button class="faq-question" type="button" aria-expanded="false">
+                        <span>How do you approach a new project?</span>
+                        <span aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer" hidden>
+                        <p>I start with the page goal, sketch the structure, build the responsive layout, then polish interaction and accessibility.</p>
+                    </div>
+                </article>
+                <article class="faq-item">
+                    <button class="faq-question" type="button" aria-expanded="false">
+                        <span>Where can someone review your progress?</span>
+                        <span aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer" hidden>
+                        <p>GitHub is the best place to review the code, commits, experiments, and improvements as this portfolio grows.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
         <section class="section contact-section reveal" id="contact">
+            <div class="contact-intro">
+                <p class="eyebrow">Contact</p>
+                <h2>Let's build something clear.</h2>
+                <p>Send a short note, share an opportunity, or copy the contact email for later.</p>
+                <button class="text-button copy-email-button" type="button" data-copy-email data-email="hello@goodness.dev">Copy Email</button>
+            </div>
             <div class="contact-stack">
                 <form class="contact-form message-form">
                     <div class="form-title">
@@ -233,9 +339,11 @@
                     <div class="form-field">
                         <label for="messageBody">Message:</label>
                         <textarea id="messageBody" name="message" rows="5" placeholder="Write your message here." required></textarea>
+                        <span class="message-count" data-message-count>0 characters</span>
                     </div>
 
-                    <button type="reset">Submit</button>
+                    <p class="form-status" data-form-status aria-live="polite"></p>
+                    <button type="submit">Submit</button>
                 </form>
             </div>
         </section>
