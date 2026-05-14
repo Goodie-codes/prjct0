@@ -11,12 +11,27 @@ const themeToggleIcon = document.querySelector(".theme-toggle-icon");
 const backToTopButton = document.querySelector("[data-back-to-top]");
 const currentYear = document.querySelector("[data-current-year]");
 const heroIntro = document.querySelector(".hero h1");
+const heroCopy = document.querySelector(".hero-copy");
 const contactForm = document.querySelector(".message-form");
 const messageBody = document.querySelector("#messageBody");
 const messageCount = document.querySelector("[data-message-count]");
 const formStatus = document.querySelector("[data-form-status]");
 const copyEmailButton = document.querySelector("[data-copy-email]");
+const questPanel = document.querySelector(".quest-panel");
+const questButton = document.querySelector("[data-quest-button]");
+const questText = document.querySelector("[data-quest-text]");
 let themeAnimationTimer;
+
+const buildQuests = [
+  "Polish one button state until it feels ready to ship.",
+  "Make one mobile screen feel calmer and easier to scan.",
+  "Rename one class so future-you understands it instantly.",
+  "Turn one rough idea into a tiny project card.",
+  "Add one helpful empty state to a form or section.",
+  "Pick a color pairing, test it in light mode, then tune it.",
+  "Give one interaction a smoother focus or hover state.",
+  "Write a commit message that tells the story clearly."
+];
 
 function setProjectFilter(filter) {
   projectCards.forEach((card) => {
@@ -81,9 +96,38 @@ function showFormStatus(message) {
   formStatus.textContent = message;
 }
 
+function positionHeroIntro() {
+  if (heroIntro === null || heroCopy === null) {
+    return;
+  }
+
+  const introRect = heroIntro.getBoundingClientRect();
+  const introCenterX = introRect.left + introRect.width / 2;
+  const introCenterY = introRect.top + introRect.height / 2;
+  const introX = Math.round(window.innerWidth / 2 - introCenterX);
+  const introY = Math.round(window.innerHeight / 2 - introCenterY);
+
+  document.documentElement.style.setProperty("--intro-x", `${introX}px`);
+  document.documentElement.style.setProperty("--intro-y", `${introY}px`);
+  document.documentElement.classList.add("is-intro-positioned");
+}
+
 function revealPageAfterIntro() {
-  document.documentElement.classList.remove("is-intro-typing");
-  document.documentElement.classList.add("has-intro-typed");
+  const root = document.documentElement;
+
+  root.classList.add("is-intro-releasing");
+  root.classList.remove("is-intro-typing");
+  root.classList.add("has-intro-typed");
+
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => {
+      root.classList.remove("is-intro-releasing");
+
+      window.setTimeout(() => {
+        root.classList.remove("is-intro-positioned");
+      }, 900);
+    });
+  });
 }
 
 function typeHeroIntro() {
@@ -96,15 +140,18 @@ function typeHeroIntro() {
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const heroRevealContainer = heroIntro.closest(".reveal");
 
-  heroRevealContainer?.classList.add("is-visible");
   heroIntro.setAttribute("aria-label", introText);
 
   if (prefersReducedMotion) {
+    heroRevealContainer?.classList.add("is-visible");
     heroIntro.textContent = introText;
-    revealPageAfterIntro();
+    document.documentElement.classList.remove("is-intro-typing");
+    document.documentElement.classList.add("has-intro-typed");
     return;
   }
 
+  positionHeroIntro();
+  heroRevealContainer?.classList.add("is-visible");
   heroIntro.textContent = "";
   heroIntro.classList.add("typewriter");
 
@@ -124,6 +171,30 @@ function typeHeroIntro() {
   }
 
   window.setTimeout(typeNextCharacter, 360);
+}
+
+function setRandomQuest() {
+  if (questText === null) {
+    return;
+  }
+
+  let nextQuest = questText.textContent;
+
+  while (nextQuest === questText.textContent && buildQuests.length > 1) {
+    const questIndex = Math.floor(Math.random() * buildQuests.length);
+    nextQuest = buildQuests[questIndex];
+  }
+
+  questPanel?.classList.remove("is-changing");
+  questText.textContent = nextQuest;
+
+  window.requestAnimationFrame(() => {
+    questPanel?.classList.add("is-changing");
+  });
+
+  window.setTimeout(() => {
+    questPanel?.classList.remove("is-changing");
+  }, 380);
 }
 
 filterButtons.forEach((button) => {
@@ -270,6 +341,8 @@ copyEmailButton?.addEventListener("click", async () => {
     copyEmailButton.textContent = "Copy Email";
   }, 2200);
 });
+
+questButton?.addEventListener("click", setRandomQuest);
 
 contactForm?.addEventListener("submit", (event) => {
   event.preventDefault();

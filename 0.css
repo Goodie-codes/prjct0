@@ -12,12 +12,14 @@
   --signal: #ff2d3d;
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
   --nav-anchor-offset: 96px;
+  --intro-x: 0px;
+  --intro-y: 0px;
 }
 
 :root[data-theme="light"] {
-  --bg: #fffafa;
-  --surface: #ffffff;
-  --surface-strong: #fff1f2;
+  --bg: #f3e9e7;
+  --surface: #fbf3f0;
+  --surface-strong: #efdfdd;
   --text: #4a060b;
   --muted: #8a3a3f;
   --line: rgba(143, 16, 24, 0.16);
@@ -78,7 +80,7 @@ body::after {
 
 :root[data-theme="light"] body::after {
   background:
-    linear-gradient(90deg, transparent 0%, rgba(196, 32, 43, 0.08) 30%, rgba(255, 255, 255, 0.9) 50%, rgba(196, 32, 43, 0.16) 70%, transparent 100%);
+    linear-gradient(90deg, transparent 0%, rgba(196, 32, 43, 0.08) 30%, rgba(248, 239, 236, 0.9) 50%, rgba(196, 32, 43, 0.16) 70%, transparent 100%);
 }
 
 :root.is-theme-switching body::after {
@@ -183,7 +185,7 @@ textarea {
 :root[data-theme="light"] .brand,
 :root[data-theme="light"] .nav-links,
 :root[data-theme="light"] .theme-toggle {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(251, 243, 240, 0.92);
 }
 
 .brand {
@@ -266,18 +268,28 @@ textarea {
   padding: 56px 0 80px;
 }
 
-:root.is-intro-typing {
+:root.is-intro-typing,
+:root.is-intro-releasing {
   overflow: hidden;
 }
 
 :root.is-intro-typing .site-header,
+:root.is-intro-releasing .site-header,
 :root.is-intro-typing .hero .eyebrow,
+:root.is-intro-releasing .hero .eyebrow,
 :root.is-intro-typing .hero-text,
+:root.is-intro-releasing .hero-text,
 :root.is-intro-typing .hero-actions,
+:root.is-intro-releasing .hero-actions,
 :root.is-intro-typing .quick-stats,
+:root.is-intro-releasing .quick-stats,
 :root.is-intro-typing .hero-visual,
+:root.is-intro-releasing .hero-visual,
 :root.is-intro-typing main > section:not(.hero),
+:root.is-intro-releasing main > section:not(.hero),
 :root.is-intro-typing .back-to-top,
+:root.is-intro-releasing .back-to-top,
+:root.is-intro-releasing .site-footer,
 :root.is-intro-typing .site-footer {
   opacity: 0;
   pointer-events: none;
@@ -286,7 +298,19 @@ textarea {
 
 :root.is-intro-typing .hero-copy {
   opacity: 1;
-  transform: none;
+  z-index: 25;
+  transform: translate3d(var(--intro-x), var(--intro-y), 0);
+  transition: none;
+}
+
+:root.is-intro-typing:not(.is-intro-positioned) .hero-copy {
+  opacity: 0;
+}
+
+:root.is-intro-releasing .hero-copy {
+  opacity: 1;
+  z-index: 25;
+  transform: translate3d(var(--intro-x), var(--intro-y), 0);
 }
 
 .hero .eyebrow,
@@ -298,6 +322,11 @@ main > section:not(.hero),
 .back-to-top,
 .site-footer {
   transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.hero-copy.reveal {
+  transition: opacity 0.55s ease, transform 0.86s cubic-bezier(0.2, 0.85, 0.2, 1);
+  will-change: transform;
 }
 
 .hero::before {
@@ -474,6 +503,7 @@ h3 {
 .contact-form,
 .faq-item,
 .timeline li,
+.quest-panel,
 .profile-panel {
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -489,8 +519,9 @@ h3 {
 :root[data-theme="light"] .contact-form,
 :root[data-theme="light"] .faq-item,
 :root[data-theme="light"] .timeline li,
+:root[data-theme="light"] .quest-panel,
 :root[data-theme="light"] .profile-panel {
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(251, 243, 240, 0.94);
 }
 
 .quick-stats li {
@@ -650,7 +681,7 @@ h3 {
 }
 
 :root[data-theme="light"] .code-preview {
-  background: #fff7f7;
+  background: #f7e9e7;
   color: var(--text);
 }
 
@@ -671,6 +702,86 @@ h3 {
   justify-content: space-between;
   gap: 24px;
   margin-bottom: 28px;
+}
+
+.launch-lab {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.28fr);
+  align-items: center;
+  gap: 32px;
+  border-top: 1px solid var(--line);
+}
+
+.launch-lab-copy h2 {
+  margin-bottom: 0;
+}
+
+.quest-panel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  overflow: hidden;
+  padding: 24px;
+}
+
+.quest-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 45, 61, 0.16), transparent 48%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 12px);
+  pointer-events: none;
+}
+
+:root[data-theme="light"] .quest-panel::before {
+  background:
+    linear-gradient(90deg, rgba(196, 32, 43, 0.1), transparent 48%),
+    repeating-linear-gradient(90deg, rgba(196, 32, 43, 0.04) 0 1px, transparent 1px 12px);
+}
+
+.quest-panel > * {
+  position: relative;
+}
+
+.quest-label {
+  margin-bottom: 8px;
+  color: var(--gold);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.quest-text {
+  max-width: 620px;
+  margin-bottom: 0;
+  color: var(--text);
+  font-size: clamp(1.1rem, 2.4vw, 1.7rem);
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.quest-panel.is-changing .quest-text {
+  animation: quest-pop 0.36s ease;
+}
+
+.quest-button {
+  flex: 0 0 auto;
+}
+
+@keyframes quest-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .skills-grid,
@@ -793,19 +904,19 @@ h3 {
 
 :root[data-theme="light"] .portfolio-thumb {
   background:
-    linear-gradient(135deg, rgba(196, 32, 43, 0.16), rgba(255, 255, 255, 0.94)),
+    linear-gradient(135deg, rgba(196, 32, 43, 0.16), rgba(251, 243, 240, 0.94)),
     repeating-linear-gradient(90deg, rgba(196, 32, 43, 0.08) 0 10px, transparent 10px 20px);
 }
 
 :root[data-theme="light"] .greeting-thumb {
   background:
-    linear-gradient(135deg, rgba(196, 32, 43, 0.2), rgba(255, 255, 255, 0.95)),
+    linear-gradient(135deg, rgba(196, 32, 43, 0.2), rgba(251, 243, 240, 0.95)),
     radial-gradient(circle at 70% 20%, rgba(196, 32, 43, 0.2), transparent 24%);
 }
 
 :root[data-theme="light"] .docs-thumb {
   background:
-    linear-gradient(135deg, rgba(184, 121, 53, 0.16), rgba(255, 255, 255, 0.95)),
+    linear-gradient(135deg, rgba(184, 121, 53, 0.16), rgba(251, 243, 240, 0.95)),
     linear-gradient(90deg, rgba(196, 32, 43, 0.12), transparent);
 }
 
@@ -1117,6 +1228,7 @@ h3 {
 
   .hero,
   .split-section,
+  .launch-lab,
   .contact-section {
     grid-template-columns: 1fr;
   }
@@ -1192,6 +1304,15 @@ h3 {
 
   .hero-actions {
     flex-direction: column;
+  }
+
+  .quest-panel {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .quest-button {
+    width: 100%;
   }
 
   .button {
