@@ -8,6 +8,7 @@ const pageSections = document.querySelectorAll("main section[id]");
 const siteHeader = document.querySelector(".site-header");
 const themeToggle = document.querySelector("[data-theme-toggle]");
 const themeToggleIcon = document.querySelector(".theme-toggle-icon");
+const navToggle = document.querySelector(".nav-toggle");
 const backToTopButton = document.querySelector("[data-back-to-top]");
 const currentYear = document.querySelector("[data-current-year]");
 const heroIntro = document.querySelector(".hero h1");
@@ -71,12 +72,23 @@ function playThemeSwitchAnimation() {
 function setTheme(theme, shouldAnimate = false) {
   document.documentElement.dataset.theme = theme;
   localStorage.setItem("portfolio-theme", theme);
-  themeToggleIcon.textContent = theme === "dark" ? "D" : "L";
+  themeToggleIcon.textContent = theme === "dark" ? "☾" : "☀";
   themeToggle.setAttribute("aria-label", `${theme === "dark" ? "Dark" : "Light"} theme active`);
 
   if (shouldAnimate) {
     playThemeSwitchAnimation();
   }
+}
+
+function setMobileNavOpen(isOpen) {
+  if (navToggle === null) {
+    return;
+  }
+
+  const root = document.documentElement;
+  root.classList.toggle("is-nav-open", isOpen);
+  navToggle.setAttribute("aria-expanded", String(isOpen));
+  navToggle.setAttribute("aria-label", isOpen ? "Close section navigation" : "Open section navigation");
 }
 
 function updateMessageCount() {
@@ -297,18 +309,9 @@ themeToggle.addEventListener("click", () => {
   setTheme(activeTheme, true);
 });
 
-window.addEventListener("scroll", () => {
-  const shouldShowBackToTop = window.scrollY > 420;
-  backToTopButton.classList.toggle("is-visible", shouldShowBackToTop);
-});
-
-window.addEventListener("resize", updateNavAnchorOffset);
-
-backToTopButton.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
+navToggle?.addEventListener("click", () => {
+  const isOpen = !document.documentElement.classList.contains("is-nav-open");
+  setMobileNavOpen(isOpen);
 });
 
 navLinks.forEach((link) => {
@@ -318,6 +321,30 @@ navLinks.forEach((link) => {
     if (sectionId !== undefined) {
       setActiveNavLink(sectionId);
     }
+
+    if (document.documentElement.classList.contains("is-nav-open")) {
+      setMobileNavOpen(false);
+    }
+  });
+});
+
+window.addEventListener("scroll", () => {
+  const shouldShowBackToTop = window.scrollY > 420;
+  backToTopButton.classList.toggle("is-visible", shouldShowBackToTop);
+});
+
+window.addEventListener("resize", () => {
+  updateNavAnchorOffset();
+
+  if (window.innerWidth > 900 && document.documentElement.classList.contains("is-nav-open")) {
+    setMobileNavOpen(false);
+  }
+});
+
+backToTopButton.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
   });
 });
 
